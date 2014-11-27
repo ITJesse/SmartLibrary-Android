@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="pink">#fdf9eb</color>
+    <color name="yellow">#fe6600</color>
+    <color name="red">#f40707</color>
+    <color name="gray_text">#8e8e8e</color>
+    <color name="settler_center_title_bar_bg">#454545</color>
+    <!-- 深红 -->
+    <color name="deepred">#cc0000</color>
+    <color name="settlement_center_bg">#e2e2e2</color>
+    <color name="button_red_back">#dd0a21</color>
+     <!-- 深绿褐色 -->
+    <color name="slateblue">#6A5ACD</color>
+    <color name="gray">#D6D6D6</color>
+    <!-- 灰色字体 -->
+    <color name="grayText">#909090</color>
+    <color name="darkgray">#808080</color>
+    
+  <drawable name="black">#000000</drawable>
+  <drawable name="white">#FFFFFF</drawable>
+  <drawable name="blue">#0000FF</drawable>
+</resources>

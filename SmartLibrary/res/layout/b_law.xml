@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#f6f6f6"
+    android:orientation="vertical"
+    tools:context="com.banban.activity.personFragment" >
+
+    <EditText
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="291dp"
+        android:hint="点此添加借阅制度"
+        android:layout_weight="0.70" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/b_law" />
+
+</LinearLayout>

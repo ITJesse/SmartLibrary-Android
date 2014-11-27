@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
+   <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
+        <activity android:name="com.withelper.slide.WelcomeActivity"
+                  android:theme="@android:style/Theme.Light.NoTitleBar"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        
+         <activity 
+            android:name="com.withelper.slide.MenuActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
+             >
+        </activity>
+        
+          <activity 
+            android:name="com.withelper.slide.IndexBriefAcitvity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+             >
+        </activity>
+        
+                    <activity 
+            android:name="com.withelper.slide.IndexActAcitvity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+             >
+        </activity>
+        
+          <activity 
+            android:name="com.withelper.slide.IndexNaviAcitvity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+             >
+        </activity>
+        
+           <activity 
+            android:name="com.withelper.slide.IndexBookAcitvity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+             >
+        </activity>
+        
+            <activity 
+            android:name="com.withelper.slide.LoginActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+             >
+        </activity>
+        
+            <activity 
+            android:name="com.withelper.slide.AboutAcitvity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+             >
+        </activity>
+        
+            <activity 
+            android:name="com.withelper.slide.cllxAcitvity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+             >
+        </activity>
+            <activity 
+            android:name="com.withelper.slide.gcrlxAcitvity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+             >
+        </activity>
+            <activity 
+            android:name="com.withelper.slide.IndexHotBookAcitvity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+             >
+        </activity>
+                    <activity 
+            android:name="com.withelper.slide.IndexSearchAcitvity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+             >
+        </activity>
+    </application>
+
+</manifest>

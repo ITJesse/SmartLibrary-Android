@@ -1,0 +1,108 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#f6f6f6"
+    android:orientation="vertical"
+    tools:context="com.banban.activity.personFragment" >
+
+    <ImageView  
+            android:id="@+id/dialog_title_border"  
+            android:layout_width="fill_parent"  
+            android:layout_height="wrap_content"  
+             android:src="@drawable/titile_line" />
+
+      <ImageView
+          android:layout_width="fill_parent"
+          android:layout_height="80dp"
+          android:background="@drawable/index_head" />
+      
+  <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="20.0dip"
+      android:gravity="center"
+      android:orientation="horizontal" >
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="40.0dip"
+          android:layout_marginLeft="20.0dip"
+          android:background="@drawable/shape_line"
+          android:gravity="center_vertical" >
+
+          <EditText
+              android:id="@+id/search"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="20.0dip"
+              android:layout_marginRight="20.0dip"
+              android:background="@null"
+              android:gravity="center_vertical"
+              android:hint="输入图书信息查询"
+              android:textColorHint="#6f8ba3"
+              android:textSize="20sp" />
+      </LinearLayout>
+     
+           <ImageView
+          android:id="@+id/index_search"
+          android:layout_width="30dp"
+          android:layout_height="30dp"
+          android:layout_marginLeft="10.0dip"
+          android:src="@drawable/index_search" />
+     
+
+  </LinearLayout>
+
+<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="160dp"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/index_brief"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/index_brief"
+         android:layout_weight="1" />
+
+    <ImageView
+        android:id="@+id/index_act"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_weight="1"
+        android:src="@drawable/index_act" />
+
+</LinearLayout>
+
+<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:orientation="horizontal"
+        android:layout_weight="1" >
+
+    <ImageView
+        android:id="@+id/index_navi"
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:layout_gravity="left"
+        android:src="@drawable/index_navi" 
+         android:layout_weight="1"/>
+
+    <ImageView
+        android:id="@+id/index_book"
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:layout_gravity="left"
+        android:src="@drawable/index_book" 
+         android:layout_weight="1"/>
+</LinearLayout>
+</LinearLayout>
+</LinearLayout>
