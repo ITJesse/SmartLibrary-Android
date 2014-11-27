@@ -40,23 +40,24 @@
         android:src="@drawable/usr"/>
            
     <EditText
-                android:id="@+id/l_name"
-                android:layout_width="200dip"
-                android:layout_height="wrap_content"
-                android:maxLength="20"
-                android:textColor="@color/gray"
-                android:background="@null"
-                android:textColorHint="@color/gray"
-                android:hint="账号"
-                android:textSize="18.0sp" 
-                 android:gravity="center_vertical"/>
+        android:id="@+id/l_studentId"
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:gravity="center_vertical"
+        android:hint="学号"
+        android:maxLength="20"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        android:textSize="18.0sp" />
+
         </LinearLayout>
 
 <!--         <View
             android:layout_width="fill_parent"
             android:layout_height="1.0px"
             android:background="@drawable/shape_line" /> -->    
-        <LinearLayout
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="45.0dip"
         android:layout_marginLeft="40.0dip"
@@ -83,6 +84,7 @@
                 android:hint="密码"
                 android:textSize="18.0sp" 
                  android:gravity="center_vertical"/>
+
         </LinearLayout>
 
 <!--         <View
@@ -129,15 +131,5 @@
         android:gravity="bottom|center_horizontal"
         android:layout_marginTop="80.0dip"
         android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/registerID"
-            android:text="注册账号"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/gray"
-            android:textSize="18.0sp"
-            android:clickable="true"
-            android:focusable="true"  />
     </LinearLayout>
     </LinearLayout>
