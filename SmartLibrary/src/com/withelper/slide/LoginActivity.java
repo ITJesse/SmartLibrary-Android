@@ -20,6 +20,7 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -54,9 +55,11 @@ public class LoginActivity extends Activity implements OnClickListener{
 		
 		t1.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG );
 		
-//		EditText l_name=(EditText)findViewById(R.id.l_studentId);
-//		EditText l_psw=(EditText)findViewById(R.id.l_password);
+		EditText l_name=(EditText)findViewById(R.id.l_studentId);
+		EditText l_psw=(EditText)findViewById(R.id.l_password);
 //		l_name.setText("cooelf");
+		l_name.setText("1203020333");
+		l_psw.setText("zyb940708");
 		t1.setOnClickListener(this);
 		
 		mBtnRegister = (Button) findViewById(R.id.login_btn);
@@ -99,17 +102,56 @@ public class LoginActivity extends Activity implements OnClickListener{
 		editor.putString("name",name );
 		editor.putString("age", pass);
 		editor.commit();//提交修改
-		if(name.equals("cooelf")&&pass.equals("123")){
-			Intent intent = new Intent();
-			intent.setClass(this, MenuActivity.class);
-			startActivity(intent);
-			this.finish();
-		}else{
-			Toast.makeText(getApplicationContext(), "密码错误",
-					Toast.LENGTH_SHORT).show();
-		}
-    	
+
+		final List<NameValuePair> paramList = new ArrayList<NameValuePair>();
+		paramList.add(new BasicNameValuePair("userID",name));
+		paramList.add(new BasicNameValuePair("password", pass));
+		Toast.makeText(getApplicationContext(), "正在登陆",
+				Toast.LENGTH_SHORT).show();
+		new Thread(new Runnable(){  
+            @Override  
+            public void run() {
+            	Message msg = new Message();
+            	Bundle data = new Bundle();
+            	String url = "Login";
+				str = NetworkService.getPostResult(url, paramList);
+				data.putString("result", str);
+				msg.setData(data);
+				LoginHandler.sendMessage(msg); 
+            }
+		}).start();
 	}
+
+	Handler LoginHandler = new Handler(){
+	    @Override
+	    public void handleMessage(Message msg) {
+	        super.handleMessage(msg);
+	        Bundle data = msg.getData();
+	        String result = data.getString("result");
+	        Toast.makeText(getApplicationContext(), result,
+					Toast.LENGTH_SHORT).show();
+	        try {  
+	            JSONObject json = new JSONObject(result);
+	            String error = json.getString("error");
+	            Log.v("debug", error);
+	            if("".equals(error) || error == null || "null".equals(error)){ 
+	            	String sessionid = json.getString("sessionid");
+	            	Toast.makeText(getApplicationContext(), "登陆成功",
+	    					Toast.LENGTH_SHORT).show();
+	            	Intent intent = new Intent();
+	    			intent.setClass(LoginActivity.this, MenuActivity.class);
+	    			startActivity(intent);
+	    			LoginActivity.this.finish();
+	            }else{
+	            	Toast.makeText(getApplicationContext(), "登陆失败",
+	        				Toast.LENGTH_SHORT).show();
+	            }
+	        } catch (JSONException ex) {  
+	        	ex.printStackTrace();
+	        } 
+	    }
+	};
+	
 	//重置账户
 	void ResetAccount(){ 
 		LayoutInflater inflater = LayoutInflater.from(LoginActivity.this);  
@@ -152,7 +194,6 @@ public class LoginActivity extends Activity implements OnClickListener{
 	}
 
 	void GetPass(String studentId,String name,String idcard){
-		final String url = "ForgetPass";
 		final List<NameValuePair> paramList = new ArrayList<NameValuePair>();
 		paramList.add(new BasicNameValuePair("userID",studentId));
 		paramList.add(new BasicNameValuePair("name",name));
@@ -162,6 +203,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 		new Thread(new Runnable(){  
             @Override  
             public void run() {
+            	String url = "ForgetPass";
             	Message msg = new Message();
             	Bundle data = new Bundle();
 				str = NetworkService.getPostResult(url, paramList);
@@ -181,10 +223,10 @@ public class LoginActivity extends Activity implements OnClickListener{
 	        Toast.makeText(getApplicationContext(), result,
 					Toast.LENGTH_SHORT).show();
 	        try {  
-	            JSONTokener jsonParser = new JSONTokener(result);
-	            JSONObject json = (JSONObject) jsonParser.nextValue();
-	            String error = json.getString("error");  
-	            if(error == null){ 
+	        	JSONObject json = new JSONObject(result);
+	            String error = json.getString("error");
+	            Log.v("debug", error);
+	            if("".equals(error) || error == null || "null".equals(error)){ 
 	            	String password = json.getString("password");
 		            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
 		            builder.setTitle("找回密码");
