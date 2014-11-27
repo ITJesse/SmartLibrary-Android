@@ -5,19 +5,22 @@ import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Paint;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
+import android.os.Message;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -26,7 +29,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.withelper.R;
-import com.withelper.util.MyDialog;
 import com.withelper.util.NetworkService;
 
 public class LoginActivity extends Activity implements OnClickListener{
@@ -52,8 +54,8 @@ public class LoginActivity extends Activity implements OnClickListener{
 		
 		t1.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG );
 		
-		EditText l_name=(EditText)findViewById(R.id.l_studentId);
-		EditText l_psw=(EditText)findViewById(R.id.l_password);
+//		EditText l_name=(EditText)findViewById(R.id.l_studentId);
+//		EditText l_psw=(EditText)findViewById(R.id.l_password);
 //		l_name.setText("cooelf");
 		t1.setOnClickListener(this);
 		
@@ -104,50 +106,104 @@ public class LoginActivity extends Activity implements OnClickListener{
 			this.finish();
 		}else{
 			Toast.makeText(getApplicationContext(), "密码错误",
-			Toast.LENGTH_SHORT).show();
+					Toast.LENGTH_SHORT).show();
 		}
     	
 	}
 	//重置账户
-	void ResetAccount(){
-		 MyDialog.Builder myDialog = new MyDialog.Builder(LoginActivity.this);  
-		    myDialog.setTitle("找回密码"); 
-		   
-		    myDialog.setPositiveButton("确定", new DialogInterface.OnClickListener()  
-		    {  
-		        @Override  
-		        public void onClick(DialogInterface dialog, int which){
-		        	EditText studentId =(EditText) findViewById(R.id.r_studentId);
-		        	EditText name =(EditText) findViewById(R.id.r_name);
-		    		EditText idcard =(EditText) findViewById(R.id.r_idcard);
-		        	
-				    String reset_name=name.getText().toString();      
-				    String reset_idcard=idcard.getText().toString();	
-		    		String reset_studentId=studentId.getText().toString();
-				    
-		        	ResetID(reset_name,reset_idcard,reset_studentId);
-		        	
-
-		        }  
-		    }
-		    );  
-		    myDialog.setNegativeButton("取消", new DialogInterface.OnClickListener()  
-		    {  
-		        @Override  
-		        public void onClick(DialogInterface dialog, int which){}  
-		    });  
-		    myDialog.create().show();  
+	void ResetAccount(){ 
+		LayoutInflater inflater = LayoutInflater.from(LoginActivity.this);  
+        final View view = inflater.inflate(R.layout.dialog_layout, null);
+        AlertDialog.Builder myDialog = new AlertDialog.Builder(LoginActivity.this);
+        myDialog.setView(view);
+	    myDialog.setPositiveButton("确定", new DialogInterface.OnClickListener()  
+	    {  
+	        @Override  
+	        public void onClick(DialogInterface dialog, int which){
+	        	EditText studentId =(EditText) view.findViewById(R.id.r_studentId);
+	        	EditText name =(EditText) view.findViewById(R.id.r_name);
+	    		EditText idcard =(EditText) view.findViewById(R.id.r_idcard);
+	    		
+	    		studentId.setText("1203020333");
+	    		name.setText("朱艺博");
+	    		idcard.setText("420106199407088415");
+	        	
+			    String r_studentId = studentId.getText().toString();      
+			    String r_name = name.getText().toString();	
+	    		String r_idcard = idcard.getText().toString();
+			    
+	    		if(r_studentId.length() == 0 || r_name.length() == 0 || r_idcard.length() == 0)
+	    		{
+	    			Toast.makeText(getApplicationContext(), "信息有误",
+	    					Toast.LENGTH_SHORT).show();
+	    		}else{
+	    			GetPass(r_studentId, r_name, r_idcard);
+	    		}
+	        }  
+	    }
+	    );  
+	    myDialog.setNegativeButton("取消", new DialogInterface.OnClickListener()  
+	    {  
+	        @Override  
+	        public void onClick(DialogInterface dialog, int which){}  
+	    });  
+	    myDialog.create().show();  
 
 	}
 
-	void ResetID(String reset_name,String reset_psw,String reset_phone){
-//		String url = "http://www.withelper.com/API/Android/Login";;
-//		paramList.add(new BasicNameValuePair("userID",name));
-//		paramList.add(new BasicNameValuePair("password",password));
-//		
-//		str = NetworkService.getPostResult(url, paramList);
-//		Log.i("msg", str);
+	void GetPass(String studentId,String name,String idcard){
+		final String url = "ForgetPass";
+		final List<NameValuePair> paramList = new ArrayList<NameValuePair>();
+		paramList.add(new BasicNameValuePair("userID",studentId));
+		paramList.add(new BasicNameValuePair("name",name));
+		paramList.add(new BasicNameValuePair("idcard",idcard));
+		Toast.makeText(getApplicationContext(), "正在查询请稍后",
+				Toast.LENGTH_SHORT).show();
+		new Thread(new Runnable(){  
+            @Override  
+            public void run() {
+            	Message msg = new Message();
+            	Bundle data = new Bundle();
+				str = NetworkService.getPostResult(url, paramList);
+				data.putString("result", str);
+				msg.setData(data);
+				GetPassHandler.sendMessage(msg); 
+            }
+		}).start();
 	}
+	
+	Handler GetPassHandler = new Handler(){
+	    @Override
+	    public void handleMessage(Message msg) {
+	        super.handleMessage(msg);
+	        Bundle data = msg.getData();
+	        String result = data.getString("result");
+	        Toast.makeText(getApplicationContext(), result,
+					Toast.LENGTH_SHORT).show();
+	        try {  
+	            JSONTokener jsonParser = new JSONTokener(result);
+	            JSONObject json = (JSONObject) jsonParser.nextValue();
+	            String error = json.getString("error");  
+	            if(error == null){ 
+	            	String password = json.getString("password");
+		            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+		            builder.setTitle("找回密码");
+		            builder.setMessage("你的密码是：" + password);
+		            builder.setPositiveButton("确定", new DialogInterface.OnClickListener()  
+		    	    {  
+		    	        @Override  
+		    	        public void onClick(DialogInterface dialog, int which){}  
+		    	    });  
+		            builder.create().show(); 
+	            }else{
+	            	Toast.makeText(getApplicationContext(), "信息有误",
+	        				Toast.LENGTH_SHORT).show();
+	            }
+	        } catch (JSONException ex) {  
+	            // 异常处理代码  
+	        } 
+	    }
+	};
 	
 
 //	void JugeRegister(){

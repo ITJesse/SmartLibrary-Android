@@ -2,7 +2,6 @@ package com.withelper.util;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
@@ -20,11 +19,13 @@ import org.apache.http.util.EntityUtils;
 
 import android.util.Log;
 
+import com.withelper.util.ParseMD5;
 
 public class NetworkService {
 
 	private static String TAG = "NetworkService";
 	private static String salt = "withelper_itjesse";
+	private static String base_url = "http://library.itjesse.cn/API/Android/";
 	
 	
 	public static void cancel() {
@@ -64,18 +65,9 @@ public class NetworkService {
 		UrlEncodedFormEntity entity = null;
 		String timestamp = String.valueOf(System.currentTimeMillis());
 		String sign = salt + timestamp;
-		byte[] hash;
-	    try {
-	    	hash = MessageDigest.getInstance("MD5").digest(sign.getBytes());;
-	    } catch (NoSuchAlgorithmException e) {
-	        throw new RuntimeException("Huh, MD5 should be supported?", e);
-	    }
-	    StringBuilder hex = new StringBuilder(hash.length * 2);
-	    for (byte b : hash) {
-	        if ((b & 0xFF) < 0x10) hex.append("0");
-	        hex.append(Integer.toHexString(b & 0xFF));
-	    }
-	    sign = hex.toString();
+
+	    sign = ParseMD5.parseStrToMd5U32(sign);
+
 		paramList.add(new BasicNameValuePair("timestamp",timestamp));
 		paramList.add(new BasicNameValuePair("sign",sign));
 		try {
@@ -85,7 +77,7 @@ public class NetworkService {
 			e1.printStackTrace();
 		}			
 
-		HttpPost post = new HttpPost(url);
+		HttpPost post = new HttpPost(base_url + url);
 		BasicHttpParams httpParams = new BasicHttpParams();			
 		HttpConnectionParams.setConnectionTimeout(httpParams, 10 * 1000);
 		HttpConnectionParams.setSoTimeout(httpParams, 10 * 1000);
@@ -101,14 +93,16 @@ public class NetworkService {
 				String content = EntityUtils.toString(response.getEntity(),"utf-8");
 
 				return URLDecoder.decode(content,"utf-8");
-			}				
+				//return timestamp;
+			}else{
+				return "{\"error\":405,\"resultMsg\":\"网络超时！\"}";
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 			return "{\"error\":405,\"resultMsg\":\"网络超时！\"}";
 		} finally {
 			//閲婃斁缃戠粶杩炴帴璧勬簮
 			httpClient.getConnectionManager().shutdown();
-		}
-		return "{\"error\":405,\"resultMsg\":\"网络超时！\"}";		
+		}	
 	}
 }
