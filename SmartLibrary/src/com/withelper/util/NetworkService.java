@@ -2,7 +2,6 @@ package com.withelper.util;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -18,8 +17,6 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.util.EntityUtils;
 
 import android.util.Log;
-
-import com.withelper.util.ParseMD5;
 
 public class NetworkService {
 

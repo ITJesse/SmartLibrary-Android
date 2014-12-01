@@ -2,16 +2,16 @@ package com.withelper.slide;
 
 
 
-import com.withelper.R;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import com.withelper.R;
 
 public class LearningFragment extends Fragment implements OnClickListener{
 	private View p;

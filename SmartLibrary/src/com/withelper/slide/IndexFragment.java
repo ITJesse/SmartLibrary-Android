@@ -2,8 +2,6 @@ package com.withelper.slide;
 
 
 
-import com.withelper.R;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,9 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
+
+import com.withelper.R;
 
 public class IndexFragment extends Fragment implements OnClickListener  {
     private View p;
@@ -61,7 +59,7 @@ public class IndexFragment extends Fragment implements OnClickListener  {
 		     getActivity().startActivity(intent3);
 			break;
 		case R.id.index_book:
-			Intent intent4 = new Intent(getActivity(),IndexHotBookAcitvity.class);
+			Intent intent4 = new Intent(getActivity(),IndexBookAcitvity.class);
 		     getActivity().startActivity(intent4);
 			break;
 		case R.id.index_search:

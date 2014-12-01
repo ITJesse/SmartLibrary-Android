@@ -1,10 +1,7 @@
 ﻿package com.withelper.pullrefresh;
 
-import com.withelper.R;
-
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -18,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.withelper.R;
 
 
 public class PullToRefreshView extends LinearLayout {

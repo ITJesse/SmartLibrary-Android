@@ -13,6 +13,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import android.app.Activity;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.Toast;
+
 import com.withelper.R;
 import com.withelper.adapter.HotBookInfo;
 import com.withelper.adapter.HotBookListAdapter;
@@ -20,22 +29,6 @@ import com.withelper.pullrefresh.PullToRefreshView;
 import com.withelper.pullrefresh.PullToRefreshView.OnFooterRefreshListener;
 import com.withelper.pullrefresh.PullToRefreshView.OnHeaderRefreshListener;
 import com.withelper.util.NetworkService;
-
-
-import android.app.Activity;
-import android.content.Context;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
 
 public class IndexBookAcitvity extends Activity implements OnHeaderRefreshListener,OnFooterRefreshListener {
 private ListView lv_hotbooklist;
@@ -85,11 +78,11 @@ private ListView lv_hotbooklist;
 	
 	protected void GetHotBookList() {
 
-		String classNum = "B";
+//		String classNum = "";
 		
 		// 创建HttpParams以用来设置HTTP参数
 		p_paramList= new ArrayList<NameValuePair>();
-		p_paramList.add(new BasicNameValuePair("classNum",classNum));
+//		p_paramList.add(new BasicNameValuePair("classNum",classNum));
 
 		GetHotBookListAsyncTask myTask = new GetHotBookListAsyncTask(this);
 		myTask.execute("");
@@ -126,11 +119,11 @@ private ListView lv_hotbooklist;
 			// TODO Auto-generated method stub
 			try 
 			{
-				JSONTokener jsonParser = new JSONTokener(result);
-				JSONObject responseobj = (JSONObject) jsonParser.nextValue(); 
-				if("success".equals(responseobj.getString("errorMsg")))
+				JSONObject json = new JSONObject(result);
+	            String error = json.getString("error");
+	            if("".equals(error) || error == null || "null".equals(error))
 				{
-					JSONArray newlist = responseobj.getJSONArray("response");
+					JSONArray newlist = json.getJSONArray("hot");
 					int length = newlist.length();
 					ArrayList<HotBookInfo> hotbookenewlist = new ArrayList<HotBookInfo>();
 					if (length > 0) {
@@ -150,13 +143,14 @@ private ListView lv_hotbooklist;
 						if(hotbookenewlist.size() > 0)
 							hotbooklist.addAll(hotbookenewlist);
 						sla.notifyDataSetChanged();
+					}else{
+						Toast.makeText(getApplicationContext(), "系统错误",
+		        				Toast.LENGTH_SHORT).show();
 					}
-					else
-					{
-					}
+				}else{
+					Toast.makeText(getApplicationContext(), "系统错误",
+	        				Toast.LENGTH_SHORT).show();
 				}
-				else {
-			}
 			} catch (Exception e) {
 			}
 			closeHeaderOrFooter(true);
@@ -165,7 +159,7 @@ private ListView lv_hotbooklist;
 		// 获取订单列表数据
 		protected String InitData() {
 			String str ="";
-			String url = "http://www.withelper.com/API/Android/LibraryHot";
+			String url = "LibraryHot";
 			str = NetworkService.getPostResult(url, p_paramList);
 			Log.i("msg", str);
 			return str;

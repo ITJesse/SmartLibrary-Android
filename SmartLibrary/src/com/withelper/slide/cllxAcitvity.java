@@ -1,21 +1,10 @@
 package com.withelper.slide;
 
 
-import java.util.ArrayList;
-
-import com.withelper.R;
-
-
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+
+import com.withelper.R;
 
 public class cllxAcitvity extends Activity {
 	@Override

@@ -7,7 +7,6 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -40,7 +39,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 	String name="";
 	String password="";
 	String phone="";
-	String str ="";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -114,8 +113,8 @@ public class LoginActivity extends Activity implements OnClickListener{
             	Message msg = new Message();
             	Bundle data = new Bundle();
             	String url = "Login";
-				str = NetworkService.getPostResult(url, paramList);
-				data.putString("result", str);
+            	resultData = NetworkService.getPostResult(url, paramList);
+				data.putString("result", resultData);
 				msg.setData(data);
 				LoginHandler.sendMessage(msg); 
             }
@@ -206,8 +205,8 @@ public class LoginActivity extends Activity implements OnClickListener{
             	String url = "ForgetPass";
             	Message msg = new Message();
             	Bundle data = new Bundle();
-				str = NetworkService.getPostResult(url, paramList);
-				data.putString("result", str);
+            	resultData = NetworkService.getPostResult(url, paramList);
+				data.putString("result", resultData);
 				msg.setData(data);
 				GetPassHandler.sendMessage(msg); 
             }
