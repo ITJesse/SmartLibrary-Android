@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">智慧图书馆</string>
+    <string name="app_name">CIRCLE智慧图书馆</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu1">馆区服务</string>
     <string name="menu2">我的借阅</string>

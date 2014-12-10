@@ -127,8 +127,8 @@ public class LoginActivity extends Activity implements OnClickListener{
 	        super.handleMessage(msg);
 	        Bundle data = msg.getData();
 	        String result = data.getString("result");
-	        Toast.makeText(getApplicationContext(), result,
-					Toast.LENGTH_SHORT).show();
+//	        Toast.makeText(getApplicationContext(), result,
+//					Toast.LENGTH_SHORT).show();
 	        try {  
 	            JSONObject json = new JSONObject(result);
 	            String error = json.getString("error");
