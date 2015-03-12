@@ -1,4 +1,4 @@
-﻿package com.withelper.pullrefresh;
+package com.withelper.pullrefresh;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -141,11 +141,9 @@ public class PullToRefreshView extends LinearLayout {
 
 	/**
 	 * init
-	 * 
+	 *
 	 * @description
-	 * @param context
-	 *            hylin 2012-7-26上午10:08:33
-	 */
+     */
 	private void init() {
 		// Load all of the animations we need in code rather than through XML
 		mFlipAnimation = new RotateAnimation(0, -180,
@@ -222,7 +220,7 @@ public class PullToRefreshView extends LinearLayout {
 
 	/**
 	 * init AdapterView like ListView,GridView and so on;or init ScrollView
-	 * 
+	 *
 	 * @description hylin 2012-7-30下午8:48:12
 	 */
 	private void initContentAdapterView() {
@@ -347,7 +345,7 @@ public class PullToRefreshView extends LinearLayout {
 
 	/**
 	 * 是否应该到了父View,即PullToRefreshView滑动
-	 * 
+	 *
 	 * @param deltaY
 	 *            , deltaY > 0 是向下运�?,< 0是向上运�?
 	 * @return
@@ -415,7 +413,7 @@ public class PullToRefreshView extends LinearLayout {
 
 	/**
 	 * header 准备刷新,手指移动过程,还没有释�?
-	 * 
+	 *
 	 * @param deltaY
 	 *            ,手指滑动的距�?
 	 */
@@ -440,7 +438,7 @@ public class PullToRefreshView extends LinearLayout {
 	/**
 	 * footer 准备刷新,手指移动过程,还没有释�? 移动footer view高度同样和移动header view
 	 * 高度是一样，都是通过修改header view的topmargin的�?�来达到
-	 * 
+	 *
 	 * @param deltaY
 	 *            ,手指滑动的距�?
 	 */
@@ -465,7 +463,7 @@ public class PullToRefreshView extends LinearLayout {
 
 	/**
 	 * 修改Header view top margin的�??
-	 * 
+	 *
 	 * @description
 	 * @param deltaY
 	 * @return hylin 2012-7-31下午1:14:31
@@ -490,7 +488,7 @@ public class PullToRefreshView extends LinearLayout {
 
 	/**
 	 * header refreshing
-	 * 
+	 *
 	 * @description hylin 2012-7-31上午9:10:12
 	 */
 	private void headerRefreshing() {
@@ -508,7 +506,7 @@ public class PullToRefreshView extends LinearLayout {
 
 	/**
 	 * footer refreshing
-	 * 
+	 *
 	 * @description hylin 2012-7-31上午9:09:59
 	 */
 	private void footerRefreshing() {
@@ -521,14 +519,14 @@ public class PullToRefreshView extends LinearLayout {
 		mFooterProgressBar.setVisibility(View.VISIBLE);
 		mFooterTextView
 				.setText(R.string.pull_to_refresh_footer_refreshing_label);
-		if (mOnFooterRefreshListener != null) { 
+		if (mOnFooterRefreshListener != null) {
 			mOnFooterRefreshListener.onFooterRefresh(this);
 		}
 	}
 
 	/**
 	 * 设置header view 的topMargin的�??
-	 * 
+	 *
 	 * @description
 	 * @param topMargin
 	 *            ，为0时，说明header view 刚好完全显示出来�? �?-mHeaderViewHeight时，说明完全隐藏�?
@@ -543,7 +541,7 @@ public class PullToRefreshView extends LinearLayout {
 
 	/**
 	 * header view 完成更新后恢复初始状�?
-	 * 
+	 *
 	 * @description hylin 2012-7-31上午11:54:23
 	 */
 	public void onHeaderRefreshComplete() {
@@ -558,7 +556,7 @@ public class PullToRefreshView extends LinearLayout {
 
 	/**
 	 * Resets the list to a normal state after a refresh.
-	 * 
+	 *
 	 * @param lastUpdated
 	 *            Last updated at.
 	 */
@@ -582,7 +580,7 @@ public class PullToRefreshView extends LinearLayout {
 
 	/**
 	 * Set a text to represent when the list was last updated.
-	 * 
+	 *
 	 * @param lastUpdated
 	 *            Last updated at.
 	 */
@@ -597,7 +595,7 @@ public class PullToRefreshView extends LinearLayout {
 
 	/**
 	 * 获取当前header view 的topMargin
-	 * 
+	 *
 	 * @description
 	 * @return hylin 2012-7-31上午11:22:50
 	 */
@@ -608,7 +606,7 @@ public class PullToRefreshView extends LinearLayout {
 
 	/**
 	 * lock
-	 * 
+	 *
 	 * @description hylin 2012-7-27下午6:52:25
 	 */
 	private void lock() {
@@ -617,7 +615,7 @@ public class PullToRefreshView extends LinearLayout {
 
 	/**
 	 * unlock
-	 * 
+	 *
 	 * @description hylin 2012-7-27下午6:53:18
 	 */
 	private void unlock() {
@@ -626,7 +624,7 @@ public class PullToRefreshView extends LinearLayout {
 
 	/**
 	 * set headerRefreshListener
-	 * 
+	 *
 	 * @description
 	 * @param headerRefreshListener
 	 *            hylin 2012-7-31上午11:43:58
