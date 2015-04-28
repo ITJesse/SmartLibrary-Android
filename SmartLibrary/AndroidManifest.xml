@@ -5,6 +5,7 @@
     android:versionName="1.0" >
 	
     <uses-permission android:name="android.permission.INTERNET"/>
+    
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="21" />
@@ -77,6 +78,16 @@
         </activity>
                     <activity 
             android:name="com.withelper.slide.IndexSearchAcitvity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+             >
+        </activity>
+        <activity 
+            android:name="com.withelper.slide.IndexQRcodeActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+             >
+        </activity>
+        <activity 
+            android:name="com.withelper.slide.IndexLearnActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar"
              >
         </activity>

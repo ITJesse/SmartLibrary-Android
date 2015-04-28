@@ -36,9 +36,9 @@ public class LoginActivity extends Activity implements OnClickListener{
 	//private String ipAddress = "192.168.1.238";
 	private Button mBtnRegister;
 	private String resultData;
-	String name="";
-	String password="";
-	String phone="";
+	private String name="";
+	private String password="";
+	private String phone="";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +53,12 @@ public class LoginActivity extends Activity implements OnClickListener{
 		TextView t1 = (TextView) findViewById(R.id.forget_Psw);
 		
 		t1.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG );
-		
 		EditText l_name=(EditText)findViewById(R.id.l_studentId);
 		EditText l_psw=(EditText)findViewById(R.id.l_password);
+		
 //		l_name.setText("cooelf");
-		l_name.setText("1203020333");
-		l_psw.setText("zyb940708");
+//		l_name.setText("1203020333");
+//		l_psw.setText("cs162536");
 		t1.setOnClickListener(this);
 		
 		mBtnRegister = (Button) findViewById(R.id.login_btn);
@@ -134,15 +134,28 @@ public class LoginActivity extends Activity implements OnClickListener{
 	            String error = json.getString("error");
 	            Log.v("debug", error);
 	            if("".equals(error) || error == null || "null".equals(error)){ 
+	            	//将sessionid写入
 	            	String sessionid = json.getString("sessionid");
-	            	Toast.makeText(getApplicationContext(), "登陆成功",
-	    					Toast.LENGTH_SHORT).show();
+	            	SharedPreferences sharedPreferences1 = getSharedPreferences("login", Context.MODE_PRIVATE); //私有数据
+	        		Editor editor1 = sharedPreferences1.edit();
+	        		editor1.putString("sessionid",sessionid );
+	        		editor1.commit();//提交修改
+	            	
+	            	Toast.makeText(getApplicationContext(), "登陆成功",Toast.LENGTH_SHORT).show();
+	    					
+	            	
 	            	Intent intent = new Intent();
 	    			intent.setClass(LoginActivity.this, MenuActivity.class);
-	    			startActivity(intent);
+					
+	    			SharedPreferences sharedPreferences = getSharedPreferences("index_qrcode", Context.MODE_PRIVATE); //私有数据
+					Editor editor = sharedPreferences.edit();
+					editor.putString("Sno",((EditText) findViewById(R.id.l_studentId)).getText().toString());
+					editor.commit();//提交修改
+					
+					startActivity(intent);
 	    			LoginActivity.this.finish();
 	            }else{
-	            	Toast.makeText(getApplicationContext(), "登陆失败",
+	            	Toast.makeText(getApplicationContext(), "学号或密码错误，登录失败",
 	        				Toast.LENGTH_SHORT).show();
 	            }
 	        } catch (JSONException ex) {  
