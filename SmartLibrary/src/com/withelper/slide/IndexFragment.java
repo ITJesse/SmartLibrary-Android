@@ -5,6 +5,7 @@ package com.withelper.slide;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,6 +38,7 @@ public class IndexFragment extends Fragment implements OnClickListener  {
     	t6.setOnClickListener(this);
 	   	t7.setOnClickListener(this);
     	//initView();
+	   	
     	return p; 
     }
     
@@ -47,6 +49,8 @@ public class IndexFragment extends Fragment implements OnClickListener  {
     	
     }
 */
+    
+
 	@Override
 	public void onClick(View v) {
 		switch(v.getId())
@@ -82,7 +86,8 @@ public class IndexFragment extends Fragment implements OnClickListener  {
 		default:
 				break;
 		}
-		
+		 
+	   
 /*		Intent intent = new Intent(getActivity(),WelcomeActivity.class);
 	     getActivity().startActivity(intent);*/
 	}

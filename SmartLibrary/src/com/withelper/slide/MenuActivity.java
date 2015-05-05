@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
@@ -24,6 +26,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
     private ResideMenuItem itemSuggestion;
     private ResideMenuItem itemSet;
     private ResideMenuItem itemIndex;
+    long exitTime = 0; 
     TextView title;
     private Button test;
     private View classview;
@@ -160,6 +163,28 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         }			
     		resideMenu.closeMenu();
         }
+    @Override  
+        public boolean onKeyDown(int keyCode, KeyEvent event)   
+        {  
+                  
+    	if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN)  
+                     {  
+                               
+                             if((System.currentTimeMillis()-exitTime) > 2000)  //System.currentTimeMillis()无论何时调用，肯定大于2000  
+                             {  
+                              Toast.makeText(getApplicationContext(), "再按一次退出程序",Toast.LENGTH_SHORT).show();                                  
+                              exitTime = System.currentTimeMillis();  
+                             }  
+                             else  
+                             {  
+                                 finish();  
+                                System.exit(0);  
+                             }  
+                                       
+                             return true;  
+                     }  
+                     return super.onKeyDown(keyCode, event);  
+        }  
 
 /*    private ResideMenu.OnMenuListener menuListener = new ResideMenu.OnMenuListener() {
         @Override

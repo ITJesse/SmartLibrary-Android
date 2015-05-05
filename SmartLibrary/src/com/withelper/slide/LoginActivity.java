@@ -24,6 +24,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,7 +56,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 		t1.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG );
 		EditText l_name=(EditText)findViewById(R.id.l_studentId);
 		EditText l_psw=(EditText)findViewById(R.id.l_password);
-		
+		CheckBox chb = (CheckBox)findViewById(R.id.checkBox1);
 //		l_name.setText("cooelf");
 //		l_name.setText("1203020333");
 //		l_psw.setText("cs162536");
@@ -63,6 +64,17 @@ public class LoginActivity extends Activity implements OnClickListener{
 		
 		mBtnRegister = (Button) findViewById(R.id.login_btn);
 		mBtnRegister.setOnClickListener(this);
+		SharedPreferences sharedPreferences2 = getSharedPreferences("login", Context.MODE_PRIVATE); //私有数据
+		String check = sharedPreferences2.getString("isCheck",null);
+		if(check != null)
+			if(check.equals("Y")){
+			
+		    chb.setChecked(true);
+			l_name.setText(sharedPreferences2.getString("name",null));
+			l_psw.setText(sharedPreferences2.getString("pass",null));
+			Login();
+			}
+
 		
 	}
 	
@@ -96,10 +108,10 @@ public class LoginActivity extends Activity implements OnClickListener{
 		EditText l_psw=(EditText)findViewById(R.id.l_password);
 		String name=l_name.getText().toString();
 		String pass=l_psw.getText().toString();
-		SharedPreferences sharedPreferences = getSharedPreferences("account", Context.MODE_PRIVATE); //私有数据
+		SharedPreferences sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE); //私有数据
 		Editor editor = sharedPreferences.edit();
 		editor.putString("name",name );
-		editor.putString("age", pass);
+		editor.putString("pass", pass);
 		editor.commit();//提交修改
 
 		final List<NameValuePair> paramList = new ArrayList<NameValuePair>();
@@ -139,6 +151,13 @@ public class LoginActivity extends Activity implements OnClickListener{
 	            	SharedPreferences sharedPreferences1 = getSharedPreferences("login", Context.MODE_PRIVATE); //私有数据
 	        		Editor editor1 = sharedPreferences1.edit();
 	        		editor1.putString("sessionid",sessionid );
+	        		//是否记住密码
+	        		CheckBox chb = (CheckBox)findViewById(R.id.checkBox1);
+	        		if(chb.isChecked()){
+	        		editor1.putString("isCheck","Y");
+	        		}else{
+	        			editor1.putString("isCheck","N");
+	        		}
 	        		editor1.commit();//提交修改
 	            	
 	            	Toast.makeText(getApplicationContext(), "登陆成功",Toast.LENGTH_SHORT).show();
