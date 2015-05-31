@@ -48,7 +48,7 @@ public class BorrowFragment extends Fragment implements OnClickListener{
 //    	Intent intent = new Intent(getActivity(),IndexBorrowActivity.class);
 //    	startActivity(intent);
     	listview = (ListView)p.findViewById(R.id.borrowlist);
-		  SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("login", Context.MODE_PRIVATE); //Ë½ÓĞÊı¾İ
+		  SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("login", Context.MODE_PRIVATE); //ç§æœ‰æ•°æ®
 		  String sessionid = sharedPreferences.getString("sessionid",null);
 		  borrowShow(sessionid);
     	return p;
@@ -83,9 +83,9 @@ public class BorrowFragment extends Fragment implements OnClickListener{
 	            Log.v("debug", error);
 	            //Log.v("book",json.toString());
 	            if("".equals(error) || error == null || "null".equals(error)){ 
-	            	borrowListShow(json);   //ÏÔÊ¾ListView
+	            	borrowListShow(json);   //æ˜¾ç¤ºListView
 	            }else{
-	            	Toast.makeText(BorrowFragment.this.getActivity().getApplicationContext(), "²éÑ¯Ê§°Ü",
+	            	Toast.makeText(BorrowFragment.this.getActivity().getApplicationContext(), "æŸ¥è¯¢å¤±è´¥",
 	        				Toast.LENGTH_SHORT).show();
              }
 	        } catch (JSONException ex) {  
@@ -107,9 +107,9 @@ public class BorrowFragment extends Fragment implements OnClickListener{
 	    		
 	    		if(i == 0){
 	    			HashMap<String,Object> item = new HashMap<String,Object>();
-	    			item.put("title", "ÊéÃû");
-		    		item.put("author", "×÷Õß");
-		    		item.put("lendTime", "Ê£ÓàÌìÊı");
+	    			item.put("title", "ä¹¦å");
+		    		item.put("author", "ä½œè€…");
+		    		item.put("lendTime", "å‰©ä½™å¤©æ•°");
 		    		brlt.add(item);
 	    		}
 	    		HashMap<String,Object> item = new HashMap<String,Object>();
@@ -129,9 +129,9 @@ public class BorrowFragment extends Fragment implements OnClickListener{
 	    		long timeOld=oldDate.getTimeInMillis();
 	    		long day =30 - (timeNow-timeOld)/(1000*60*60*24);
 	    		if(day > 0)
-	    			item.put("lendTime", day + "Ìì");
+	    			item.put("lendTime", day + "å¤©");
 	    		else
-	    			item.put("lendTime", "³¬¹ı" + -day + "Ìì");
+	    			item.put("lendTime", "è¶…è¿‡" + -day + "å¤©");
 	    		brlt.add(item);
 	    		adapter = new SimpleAdapter(this.getActivity(),brlt,R.layout.borrow_item,
 	    	  			new String[]{"title","author","lendTime"},
