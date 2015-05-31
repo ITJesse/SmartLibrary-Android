@@ -86,37 +86,18 @@
             android:layout_height="1.0px"
             android:background="@drawable/shape_line" /> -->
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10.0dip"
+    
+    <CheckBox 
+        android:id="@+id/checkBox1" 
+        android:layout_width="wrap_content"  
+		android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal" >
-
-        <CheckBox
-            android:id="@+id/checkBox1"
-            android:layout_width="wrap_content"
-            android:layout_height="45.0dip"
-            android:layout_marginLeft="40.0dip"
-            android:layout_marginRight="40.0dip"
-            android:layout_marginTop="10.0dip"
-            android:layout_weight="0.37"
-            android:text="记住密码"
-            android:textColor="@color/gray" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/forget_Psw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40.0dip"
-        android:layout_marginRight="40.0dip"
-        android:layout_marginTop="50.0dip"
-        android:clickable="true"
-        android:focusable="true"
-        android:textColor="@color/gray"
-        android:textSize="18.0sp" />
+        android:layout_marginLeft="44.0dip" 
+        android:layout_marginRight="44.0dip" 
+        android:layout_marginTop="20.0dip" 
+        android:text="记住密码" 
+        android:textColor="#6d6d6d" 
+        android:textSize="22.0sp" />
 
     <Button
         android:id="@+id/login_btn"
@@ -127,7 +108,7 @@
         android:layout_marginTop="80.0dip"
         android:background="@drawable/my_border"
         android:text="登录"
-        android:textColor="#8d8d8d"
+        android:textColor="#6d6d6d"
         android:textSize="18.0sp" />
 
     <LinearLayout

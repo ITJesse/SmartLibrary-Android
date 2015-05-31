@@ -3,20 +3,44 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <Button
+    <!-- <Button
         android:id="@+id/about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:text="关于我们" />
-
+        android:text="关于我们" /> -->
+        
     <Button
+        android:id="@+id/about"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40.0dip"
+        android:layout_marginRight="40.0dip"
+        android:layout_marginTop="100.0dip"
+        android:background="@drawable/my_border"
+        android:text="关于我们"
+        android:textColor="#6d6d6d"
+        android:textSize="18.0sp" />
+
+    <!-- <Button
         android:id="@+id/logout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_above="@id/about"
         android:gravity="center"
-        android:text="注销" />
+        android:text="注销" /> -->
+    
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40.0dip"
+        android:layout_marginRight="40.0dip"
+        android:layout_marginTop="30.0dip"
+        android:background="@drawable/my_border"
+        android:text="注销"
+        android:textColor="#6d6d6d"
+        android:textSize="18.0sp" />
 
 </RelativeLayout>
