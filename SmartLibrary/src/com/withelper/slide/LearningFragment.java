@@ -52,6 +52,13 @@ public class LearningFragment extends Fragment implements OnClickListener {
 		});
 		return p;
 	}
+	
+	 public void goLoginActivity()
+    {
+    	Intent intent = new Intent(getActivity(), LoginActivity.class);  
+    	startActivity(intent);
+    	getActivity().finish();
+    }
 
 	public void refresh() {
 		SharedPreferences sharedPreferences = this.getActivity()
@@ -91,7 +98,13 @@ public class LearningFragment extends Fragment implements OnClickListener {
 				JSONObject json = new JSONObject(result);
 				String error = json.getString("error");
 				Log.v("debug", error);
-				if ("".equals(error) || error == null || "null".equals(error)) {
+				if("-5".equals(error)){
+					Toast.makeText(LearningFragment.this.getActivity().getApplicationContext(), "登陆失效，请重新登陆",
+	        				Toast.LENGTH_SHORT).show();
+	            	goLoginActivity();
+	            }
+	            else if("".equals(error) || error == null || "null".equals(error)){ 
+	            	
 					TextView emptySeat = (TextView) p
 							.findViewById(R.id.emptyseat);
 					TextView yourSeat = (TextView) p
@@ -108,6 +121,10 @@ public class LearningFragment extends Fragment implements OnClickListener {
 						yourSeat.setText(json.getString("yourSeat"));
 					}
 				}
+	            else{
+	            	Toast.makeText(LearningFragment.this.getActivity().getApplicationContext(), "查询失败",
+	        				Toast.LENGTH_SHORT).show();
+	            }
 			} catch (JSONException ex) {
 				ex.printStackTrace();
 			}

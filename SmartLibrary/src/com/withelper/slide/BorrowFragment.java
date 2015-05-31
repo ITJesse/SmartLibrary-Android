@@ -70,6 +70,14 @@ public class BorrowFragment extends Fragment implements OnClickListener{
             }
 		}).start();
 	}
+	
+    public void goLoginActivity()
+    {
+    	Intent intent = new Intent(getActivity(), LoginActivity.class);  
+    	startActivity(intent);
+    	getActivity().finish();
+    }
+	
 	Handler borrowHandler = new Handler(){
 	    @Override
 	    public void handleMessage(Message msg) {
@@ -82,12 +90,18 @@ public class BorrowFragment extends Fragment implements OnClickListener{
 	            String error = json.getString("error");
 	            Log.v("debug", error);
 	            //Log.v("book",json.toString());
-	            if("".equals(error) || error == null || "null".equals(error)){ 
+	            if("-5".equals(error)){
+	            	Toast.makeText(BorrowFragment.this.getActivity().getApplicationContext(), "登陆失效，请重新登陆",
+	        				Toast.LENGTH_SHORT).show();
+	            	goLoginActivity();
+	            }
+	            else if("".equals(error) || error == null || "null".equals(error)){ 
 	            	borrowListShow(json);   //显示ListView
-	            }else{
+	            }
+	            else{
 	            	Toast.makeText(BorrowFragment.this.getActivity().getApplicationContext(), "查询失败",
 	        				Toast.LENGTH_SHORT).show();
-             }
+	            }
 	        } catch (JSONException ex) {  
 	        	ex.printStackTrace();
 	        } catch (ParseException e) {
