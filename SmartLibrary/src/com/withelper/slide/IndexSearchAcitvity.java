@@ -55,7 +55,7 @@ public class IndexSearchAcitvity extends Activity {
 			
 		});
 		Bundle bundle = getIntent().getExtras();
-		String searchKey = bundle.getString("searchKey");//¶Á³öÊı¾İ 
+		String searchKey = bundle.getString("searchKey");//è¯»å‡ºæ•°æ® 
 		search(searchKey);
 		
 	}
@@ -97,9 +97,9 @@ public class IndexSearchAcitvity extends Activity {
 	            Log.v("debug", error);
 	            //Log.v("book",json.toString());
 	            if("".equals(error) || error == null || "null".equals(error)){ 
-	            	ListShow(json);   //ÏÔÊ¾ListView
+	            	ListShow(json);   //æ˜¾ç¤ºListView
 	            }else{
-	            	Toast.makeText(getApplicationContext(), "²éÑ¯Ê§°Ü",
+	            	Toast.makeText(getApplicationContext(), "æŸ¥è¯¢å¤±è´¥",
 	        				Toast.LENGTH_SHORT).show();
 	            }
 	        } catch (JSONException ex) {  
@@ -119,9 +119,9 @@ public class IndexSearchAcitvity extends Activity {
 	    		
 	    		if(i == 0){
 	    			HashMap<String,Object> item = new HashMap<String,Object>();
-	    			item.put("title", "ÊéÃû");
-	        		item.put("author", "×÷Õß");
-	        		item.put("press", "³ö°æÉç");
+	    			item.put("title", "ä¹¦å");
+	        		item.put("author", "ä½œè€…");
+	        		item.put("press", "å‡ºç‰ˆç¤¾");
 	        		bklt.add(item);
 	    		}
 	    		HashMap<String,Object> item = new HashMap<String,Object>();

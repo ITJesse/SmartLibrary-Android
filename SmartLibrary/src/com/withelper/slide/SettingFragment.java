@@ -23,7 +23,7 @@ public class SettingFragment extends Fragment implements OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
      p= inflater.inflate(R.layout.settings, container, false);
      TextView t1 = (TextView)p.findViewById(R.id.about);
-     //打开关于界面
+     //鎵撳紑鍏充簬鐣岄潰
      t1.setOnClickListener(new View.OnClickListener() {  
     	       
     	     @Override  
@@ -35,17 +35,17 @@ public class SettingFragment extends Fragment implements OnClickListener{
     	 });  
 
      Button bt = (Button)p.findViewById(R.id.logout);   
-     //注销
+     //娉ㄩ攢
      bt.setOnClickListener(new View.OnClickListener() {  
 	       
 	     @Override  
 	     public void onClick(View v) {  
 	         // TODO Auto-generated method stub  
 	    	 Intent intent1 = new Intent(getActivity(),LoginActivity.class);
-				SharedPreferences sharedPreferences = getActivity().getSharedPreferences("login",Context.MODE_PRIVATE); //私有数据
+				SharedPreferences sharedPreferences = getActivity().getSharedPreferences("login",Context.MODE_PRIVATE); //绉佹湁鏁版嵁
 	    		Editor editor = sharedPreferences.edit();
 	    		editor.putString("isCheck","N" );
-	    		editor.commit();//提交修改
+	    		editor.commit();//鎻愪氦淇敼
 	     	   getActivity().startActivity(intent1); 
 	     	   getActivity().finish();
 	    }  

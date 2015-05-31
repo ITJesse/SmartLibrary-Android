@@ -40,27 +40,27 @@ public class IndexActAcitvity extends ListActivity {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
  
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("title", "活动1");
-        map.put("info", "活动1.......");
+        map.put("title", "娲诲姩1");
+        map.put("info", "娲诲姩1.......");
         map.put("img", R.drawable.i1);
         list.add(map);
  
         map = new HashMap<String, Object>();
-        map.put("title", "活动2");
-        map.put("info", "活动2.......");
+        map.put("title", "娲诲姩2");
+        map.put("info", "娲诲姩2.......");
         map.put("img", R.drawable.i2);
         list.add(map);
  
         map = new HashMap<String, Object>();
-        map.put("title", "活动3");
-        map.put("info", "活动3.......");
+        map.put("title", "娲诲姩3");
+        map.put("info", "娲诲姩3.......");
         map.put("img", R.drawable.i3);
         list.add(map);
          
         return list;
     }
      
-    // ListView 中某项被选中后的逻辑
+    // ListView 涓煇椤硅閫変腑鍚庣殑閫昏緫
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
          
@@ -68,13 +68,13 @@ public class IndexActAcitvity extends ListActivity {
     }
      
     /**
-     * listview中点击按键弹出对话框
+     * listview涓偣鍑绘寜閿脊鍑哄璇濇
      */
     public void showInfo(){
         new AlertDialog.Builder(this)
-        .setTitle("活动介绍")
-        .setMessage("介绍...")
-        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        .setTitle("娲诲姩浠嬬粛")
+        .setMessage("浠嬬粛...")
+        .setPositiveButton("纭畾", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
             }

@@ -42,7 +42,7 @@ public class LearningFragment extends Fragment implements OnClickListener {
 		// startActivity(intent);
 		refresh();
 		Button btn = (Button) p.findViewById(R.id.refresh);
-		// °ó¶¨ÄäÃûµÄ¼àÌıÆ÷£¬²¢Ö´ĞĞÄúËùÒªÔÚµã»÷°´Å¥ºóÖ´ĞĞµÄÂß¼­´úÂë
+		// ç»‘å®šåŒ¿åçš„ç›‘å¬å™¨ï¼Œå¹¶æ‰§è¡Œæ‚¨æ‰€è¦åœ¨ç‚¹å‡»æŒ‰é’®åæ‰§è¡Œçš„é€»è¾‘ä»£ç 
 		btn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -55,7 +55,7 @@ public class LearningFragment extends Fragment implements OnClickListener {
 
 	public void refresh() {
 		SharedPreferences sharedPreferences = this.getActivity()
-				.getSharedPreferences("login", Context.MODE_PRIVATE); // Ë½ÓĞÊı¾İ
+				.getSharedPreferences("login", Context.MODE_PRIVATE); // ç§æœ‰æ•°æ®
 		// Editor editor = sharedPreferences.edit();
 		String sessionid = sharedPreferences.getString("sessionid", null);
 		Log.v("sessionid", sessionid);
@@ -63,7 +63,7 @@ public class LearningFragment extends Fragment implements OnClickListener {
 		paramList.add(new BasicNameValuePair("sessionid", sessionid));
 		Toast.makeText(
 				LearningFragment.this.getActivity().getApplicationContext(),
-				"ÕıÔÚË¢ĞÂ", Toast.LENGTH_SHORT).show();
+				"æ­£åœ¨åˆ·æ–°", Toast.LENGTH_SHORT).show();
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -98,12 +98,12 @@ public class LearningFragment extends Fragment implements OnClickListener {
 							.findViewById(R.id.yourseat);
 					Toast.makeText(
 							LearningFragment.this.getActivity()
-									.getApplicationContext(), "Ë¢ĞÂ³É¹¦",
+									.getApplicationContext(), "åˆ·æ–°æˆåŠŸ",
 							Toast.LENGTH_SHORT).show();
 					emptySeat.setText(json.getString("emptySeat"));
 					String yourseat = json.getString("yourSeat");
 					if (yourseat.equals("null")) {
-						yourSeat.setText("Äú»¹Î´Ô¤Ô¼×ùÎ»");
+						yourSeat.setText("æ‚¨è¿˜æœªé¢„çº¦åº§ä½");
 					} else {
 						yourSeat.setText(json.getString("yourSeat"));
 					}

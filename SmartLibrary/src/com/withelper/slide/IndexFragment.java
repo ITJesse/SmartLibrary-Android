@@ -74,7 +74,7 @@ public class IndexFragment extends Fragment implements OnClickListener  {
 		     getActivity().startActivity(intent4);
 			break;
 		case R.id.index_search:
-			//ËÑË÷¿ò´«²Î
+			//æœç´¢æ¡†ä¼ å‚
 			EditText et = (EditText)this.getActivity().findViewById(R.id.search); 
 			Bundle bundle1 = new Bundle();
 			bundle1.putString("searchKey", et.getText().toString());

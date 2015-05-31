@@ -33,7 +33,7 @@ import com.withelper.util.NetworkService;
 public class IndexBookAcitvity extends Activity implements OnHeaderRefreshListener,OnFooterRefreshListener {
 private ListView lv_hotbooklist;
 	
-	private  PullToRefreshView  mPullToRefreshView; //ÏÂÀ­Ë¢ĞÂ¿Ø¼ş
+	private  PullToRefreshView  mPullToRefreshView; //ä¸‹æ‹‰åˆ·æ–°æ§ä»¶
 	
 	private ArrayList<HotBookInfo> hotbooklist;
 	
@@ -41,11 +41,11 @@ private ListView lv_hotbooklist;
 	
 	private HotBookListAdapter sla;
 	
-    private int loaddatacount = 30; //Ã¿´Î»ñÈ¡ÌõÊı
+    private int loaddatacount = 30; //æ¯æ¬¡è·å–æ¡æ•°
 
-	private boolean mIsStart = false; //true±íÊ¾Ë¢ĞÂ£¬false±íÊ¾¼ÓÔØ
+	private boolean mIsStart = false; //trueè¡¨ç¤ºåˆ·æ–°ï¼Œfalseè¡¨ç¤ºåŠ è½½
 	
-	private List<NameValuePair> p_paramList;   //·ÃÎÊ²ÎÊı
+	private List<NameValuePair> p_paramList;   //è®¿é—®å‚æ•°
 	
 	private SimpleDateFormat mDateFormat;
 	
@@ -80,7 +80,7 @@ private ListView lv_hotbooklist;
 
 //		String classNum = "";
 		
-		// ´´½¨HttpParamsÒÔÓÃÀ´ÉèÖÃHTTP²ÎÊı
+		// åˆ›å»ºHttpParamsä»¥ç”¨æ¥è®¾ç½®HTTPå‚æ•°
 		p_paramList= new ArrayList<NameValuePair>();
 //		p_paramList.add(new BasicNameValuePair("classNum",classNum));
 
@@ -128,13 +128,13 @@ private ListView lv_hotbooklist;
 					ArrayList<HotBookInfo> hotbookenewlist = new ArrayList<HotBookInfo>();
 					
 					if (length > 0) {
-						for(int i = 0; i < length; i++){//±éÀúJSONArray
+						for(int i = 0; i < length; i++){//éå†JSONArray
 							JSONObject jo = newlist.getJSONObject(i);
 							if(i == 0){
 							HotBookInfo pi = new HotBookInfo();
-							pi.setName("ÊéÃû");
-							pi.setLend_count("¿É½èÔÄÊı");
-							pi.setLend_ratio("½èÔÄÂÊ");
+							pi.setName("ä¹¦å");
+							pi.setLend_count("å¯å€Ÿé˜…æ•°");
+							pi.setLend_ratio("å€Ÿé˜…ç‡");
 							hotbookenewlist.add(pi);
 							}
 							HotBookInfo pi = new HotBookInfo();
@@ -151,11 +151,11 @@ private ListView lv_hotbooklist;
 							hotbooklist.addAll(hotbookenewlist);
 						sla.notifyDataSetChanged();
 					}else{
-						Toast.makeText(getApplicationContext(), "ÏµÍ³´íÎó",
+						Toast.makeText(getApplicationContext(), "ç³»ç»Ÿé”™è¯¯",
 		        				Toast.LENGTH_SHORT).show();
 					}
 				}else{
-					Toast.makeText(getApplicationContext(), "ÏµÍ³´íÎó",
+					Toast.makeText(getApplicationContext(), "ç³»ç»Ÿé”™è¯¯",
 	        				Toast.LENGTH_SHORT).show();
 				}
 			} catch (Exception e) {
@@ -163,7 +163,7 @@ private ListView lv_hotbooklist;
 			closeHeaderOrFooter(true);
 		}
 
-		// »ñÈ¡¶©µ¥ÁĞ±íÊı¾İ
+		// è·å–è®¢å•åˆ—è¡¨æ•°æ®
 		protected String InitData() {
 			String str ="";
 			String url = "LibraryHot";
@@ -206,7 +206,7 @@ private ListView lv_hotbooklist;
 		if(flag)
 			updateinfo = getLastUpdateTime();
 		if (mIsStart)
-			mPullToRefreshView.onHeaderRefreshComplete("×îºó¸üĞÂÊ±¼ä£º" + updateinfo);
+			mPullToRefreshView.onHeaderRefreshComplete("æœ€åæ›´æ–°æ—¶é—´ï¼š" + updateinfo);
 		else
 			mPullToRefreshView.onFooterRefreshComplete();
 	}
