@@ -82,7 +82,7 @@ private ListView lv_hotbooklist;
 		
 		// 创建HttpParams以用来设置HTTP参数
 		p_paramList= new ArrayList<NameValuePair>();
-//		p_paramList.add(new BasicNameValuePair("classNum",classNum));
+		p_paramList.add(new BasicNameValuePair("classNum", "B"));
 
 		GetHotBookListAsyncTask myTask = new GetHotBookListAsyncTask(this);
 		myTask.execute("");
@@ -131,18 +131,18 @@ private ListView lv_hotbooklist;
 						for(int i = 0; i < length; i++){//遍历JSONArray
 							JSONObject jo = newlist.getJSONObject(i);
 							if(i == 0){
-							HotBookInfo pi = new HotBookInfo();
-							pi.setName("书名");
-							pi.setLend_count("可借阅数");
-							pi.setLend_ratio("借阅率");
-							hotbookenewlist.add(pi);
+								HotBookInfo pi = new HotBookInfo();
+								pi.setName("书名");
+								pi.setLend_count("可借阅数");
+								pi.setLend_ratio("借阅率");
+								hotbookenewlist.add(pi);
 							}
 							HotBookInfo pi = new HotBookInfo();
 							pi.setName(jo.getString("name"));
-    						pi.setAuthor(jo.getString("author"));
-    						pi.setPress(jo.getString("press"));
-    						pi.setCallno(jo.getString("callno"));
-    						pi.setCollections(jo.getString("collections"));
+//    						pi.setAuthor(jo.getString("author"));
+//    						pi.setPress(jo.getString("press"));
+//    						pi.setCallno(jo.getString("callno"));
+//    						pi.setCollections(jo.getString("collections"));
     						pi.setLend_count(jo.getString("lend_count"));
     						pi.setLend_ratio(jo.getString("lend_ratio"));
     						hotbookenewlist.add(pi);
