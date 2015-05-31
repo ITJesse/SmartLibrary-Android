@@ -50,12 +50,12 @@ public class NetworkService {
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-			return "{\"error\":405,\"resultMsg\":\"网络超时！\"}";
+			return "{\"error\":401,\"resultMsg\":\"网络超时！\"}";
 		} finally {
 
 			httpClient.getConnectionManager().shutdown();
 		}
-		return "{\"error\":405,\"resultMsg\":\"网络超时！\"}";		
+		return "{\"error\":402,\"resultMsg\":\"网络超时！\"}";		
 	}
 
 	public static String getPostResult(String url, List<NameValuePair> paramList){
@@ -92,11 +92,11 @@ public class NetworkService {
 				return URLDecoder.decode(content,"utf-8");
 				//return timestamp;
 			}else{
-				return "{\"error\":405,\"resultMsg\":\"网络超时！\"}";
+				return "{\"error\":403,\"resultMsg\":\"网络超时！\"}";
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-			return "{\"error\":405,\"resultMsg\":\"网络超时！\"}";
+			return "{\"error\":404,\"resultMsg\":\"网络超时！\"}";
 		} finally {
 			//閲婃斁缃戠粶杩炴帴璧勬簮
 			httpClient.getConnectionManager().shutdown();

@@ -48,9 +48,9 @@ public class BorrowFragment extends Fragment implements OnClickListener{
 //    	Intent intent = new Intent(getActivity(),IndexBorrowActivity.class);
 //    	startActivity(intent);
     	listview = (ListView)p.findViewById(R.id.borrowlist);
-		  SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("login", Context.MODE_PRIVATE); //私有数据
-		  String sessionid = sharedPreferences.getString("sessionid",null);
-		  borrowShow(sessionid);
+		SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("login", Context.MODE_PRIVATE); //私有数据
+		String sessionid = sharedPreferences.getString("sessionid",null);
+		borrowShow(sessionid);
     	return p;
     }
 
