@@ -154,7 +154,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 	        		//是否记住密码
 	        		CheckBox chb = (CheckBox)findViewById(R.id.checkBox1);
 	        		if(chb.isChecked()){
-	        		editor1.putString("isCheck","Y");
+	        			editor1.putString("isCheck","Y");
 	        		}else{
 	        			editor1.putString("isCheck","N");
 	        		}
