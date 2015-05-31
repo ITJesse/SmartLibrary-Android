@@ -1,5 +1,5 @@
  /**  
- *@Description: 将字符串转化为MD5
+ *@Description: 灏嗗瓧绗︿覆杞寲涓篗D5
  */ 
 package com.withelper.util;  
 
@@ -14,7 +14,7 @@ import java.security.NoSuchAlgorithmException;
 	 * @return
 	 * @Date: 2013-9-6  
 	 * @Author: lulei  
-	 * @Description:  32位小写MD5
+	 * @Description:  32浣嶅皬鍐橫D5
 	 */
 	public static String parseStrToMd5L32(String str){
 		String reStr = null;
@@ -41,7 +41,7 @@ import java.security.NoSuchAlgorithmException;
 	 * @return
 	 * @Date: 2013-9-6  
 	 * @Author: lulei  
-	 * @Description: 32位大写MD5
+	 * @Description: 32浣嶅ぇ鍐橫D5
 	 */
 	public static String parseStrToMd5U32(String str){
 		String reStr = parseStrToMd5L32(str);
@@ -56,7 +56,7 @@ import java.security.NoSuchAlgorithmException;
 	 * @return
 	 * @Date: 2013-9-6  
 	 * @Author: lulei  
-	 * @Description: 16位小写MD5
+	 * @Description: 16浣嶅皬鍐橫D5
 	 */
 	public static String parseStrToMd5U16(String str){
 		String reStr = parseStrToMd5L32(str);
@@ -71,7 +71,7 @@ import java.security.NoSuchAlgorithmException;
 	 * @return
 	 * @Date: 2013-9-6  
 	 * @Author: lulei  
-	 * @Description: 16位大写MD5
+	 * @Description: 16浣嶅ぇ鍐橫D5
 	 */
 	public static String parseStrToMd5L16(String str){
 		String reStr = parseStrToMd5L32(str);

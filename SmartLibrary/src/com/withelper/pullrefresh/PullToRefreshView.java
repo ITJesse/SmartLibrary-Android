@@ -1,4 +1,4 @@
-﻿package com.withelper.pullrefresh;
+package com.withelper.pullrefresh;
 
 import android.content.Context;
 import android.util.AttributeSet;

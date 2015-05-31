@@ -42,7 +42,7 @@ public class HotBookListAdapter extends ArrayAdapter<HotBookInfo>{
 			holder = (ViewHolder)convertView.getTag();
 		}
 		
-		//�Կؼ���ֵ
+		//对控件赋值
         final HotBookInfo singleoder = getItem(position);
         
         if (singleoder != null) {

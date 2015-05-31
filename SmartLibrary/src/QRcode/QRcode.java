@@ -25,7 +25,7 @@ public class QRcode {
 	        	 int QR_WIDTH = 300 ;
 	        	 
 	        	 int QR_HEIGHT = 300 ;
-	        	//≈–∂œURL∫œ∑®–‘
+	        	//Âà§Êñ≠URLÂêàÊ≥ïÊÄß
 	            if (Sno == null || "".equals(Sno) || Sno.length() < 1)
 	            {
 	                return null;
@@ -35,11 +35,11 @@ public class QRcode {
 	            hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
 	            hints.put(EncodeHintType.ERROR_CORRECTION,ErrorCorrectionLevel.H);
 	            
-	            //ÕºœÒ ˝æ›◊™ªª£¨ π”√¡Àæÿ’Û◊™ªª
+	            //ÂõæÂÉèÊï∞ÊçÆËΩ¨Êç¢Ôºå‰ΩøÁî®‰∫ÜÁü©ÈòµËΩ¨Êç¢
 	            BitMatrix bitMatrix = new QRCodeWriter().encode(Sno, BarcodeFormat.QR_CODE, QR_WIDTH, QR_HEIGHT, hints);
 	            int[] pixels = new int[QR_WIDTH * QR_HEIGHT];
-	            //œ¬√Ê’‚¿Ô∞¥’’∂˛Œ¨¬ÎµƒÀ„∑®£¨÷∏ˆ…˙≥…∂˛Œ¨¬ÎµƒÕº∆¨£¨
-	            //¡Ω∏ˆfor—≠ª∑ «Õº∆¨∫·¡–…®√ËµƒΩ·π˚
+	            //‰∏ãÈù¢ËøôÈáåÊåâÁÖß‰∫åÁª¥Á†ÅÁöÑÁÆóÊ≥ïÔºåÈÄê‰∏™ÁîüÊàê‰∫åÁª¥Á†ÅÁöÑÂõæÁâáÔºå
+	            //‰∏§‰∏™forÂæ™ÁéØÊòØÂõæÁâáÊ®™ÂàóÊâ´ÊèèÁöÑÁªìÊûú
 	            for (int y = 0; y < QR_HEIGHT; y++)
 	            {
 	                for (int x = 0; x < QR_WIDTH; x++)
@@ -55,11 +55,11 @@ public class QRcode {
 	                }
 	            }
 	            //Log.v("s","2");
-	            //…˙≥…∂˛Œ¨¬ÎÕº∆¨µƒ∏Ò Ω£¨ π”√ARGB_8888
+	            //ÁîüÊàê‰∫åÁª¥Á†ÅÂõæÁâáÁöÑÊ†ºÂºèÔºå‰ΩøÁî®ARGB_8888
 	            Bitmap bitmap = Bitmap.createBitmap(QR_WIDTH, QR_HEIGHT, Bitmap.Config.ARGB_8888);
 	            bitmap.setPixels(pixels, 0, QR_WIDTH, 0, 0, QR_WIDTH, QR_HEIGHT);
 	            //Log.v("s","3");
-	            //œ‘ æµΩ“ª∏ˆImageView…œ√Ê
+	            //ÊòæÁ§∫Âà∞‰∏Ä‰∏™ImageView‰∏äÈù¢
 	            //sweepIV.setImageBitmap(bitmap);
 	            return bitmap;
 	        }
