@@ -5,11 +5,13 @@ package com.withelper.slide;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -27,16 +29,16 @@ public class IndexFragment extends Fragment implements OnClickListener  {
 	   	ImageView t3 = (ImageView) p.findViewById(R.id.index_navi);
 	   	ImageView t4 = (ImageView) p.findViewById(R.id.index_book);
 	   	ImageView t5 = (ImageView) p.findViewById(R.id.index_search);
-	   	ImageView t6 = (ImageView) p.findViewById(R.id.index_qrcode);
-	   	ImageView t7 = (ImageView) p.findViewById(R.id.index_learn);
+	   	//ImageView t6 = (ImageView) p.findViewById(R.id.index_qrcode);
+	   	//ImageView t7 = (ImageView) p.findViewById(R.id.index_learn);
 	   	
 	   	t1.setOnClickListener(this);
 	   	t2.setOnClickListener(this);
 	   	t3.setOnClickListener(this);
 	   	t4.setOnClickListener(this);
 	   	t5.setOnClickListener(this);
-    	t6.setOnClickListener(this);
-	   	t7.setOnClickListener(this);
+    	//t6.setOnClickListener(this);
+	   	//t7.setOnClickListener(this);
     	//initView();
 	   	
     	return p; 
@@ -72,17 +74,21 @@ public class IndexFragment extends Fragment implements OnClickListener  {
 		     getActivity().startActivity(intent4);
 			break;
 		case R.id.index_search:
-			
+			//ËÑË÷¿ò´«²Î
+			EditText et = (EditText)this.getActivity().findViewById(R.id.search); 
+			Bundle bundle1 = new Bundle();
+			bundle1.putString("searchKey", et.getText().toString());
 			Intent intent5 = new Intent(getActivity(),IndexSearchAcitvity.class);
+			intent5.putExtras(bundle1);
 			getActivity().startActivity(intent5);
 			break;
-	    case R.id.index_qrcode:	
-			Intent intent6 = new Intent(getActivity(),IndexQRcodeActivity.class);
-			getActivity().startActivity(intent6);
-			break;
-	    case R.id.index_learn:
-	    	Intent intent7 = new Intent(getActivity(),IndexLearnActivity.class);
-	    	getActivity().startActivity(intent7);
+//	    case R.id.index_qrcode:	
+//			Intent intent6 = new Intent(getActivity(),IndexQRcodeActivity.class);
+//			getActivity().startActivity(intent6);
+//			break;
+//	    case R.id.index_learn:
+//	    	Intent intent7 = new Intent(getActivity(),IndexLearnActivity.class);
+//	    	getActivity().startActivity(intent7);
 		default:
 				break;
 		}

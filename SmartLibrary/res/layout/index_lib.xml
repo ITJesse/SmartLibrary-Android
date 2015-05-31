@@ -29,7 +29,7 @@
    			 android:textSize="20sp"
    			 android:layout_width="wrap_content"
     		 android:layout_height="wrap_content"
-             android:text="武汉工程大学图书馆" />  
+             android:text="智慧图书馆" />  
 	<TextView
              android:layout_marginLeft="10.0dip"
          	android:layout_marginRight="10.0dip"
@@ -37,7 +37,7 @@
    			 android:textSize="17sp"
    			 android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="经过30多年的建设与发展，已形成以化学化工为特色，工、理、经、管、文、法多个学科门类相结合的多科性现代化大学图书馆；
-总建筑面积为26859平方米；阅览座位2018个；在校读者总数达15000人；截止2006年7月，全校馆藏文献总量达137万多册，电子图书30多万册，中外文数据库20多个，各类服务器及交换机设备10多台，各类连网计算机400余台，存储总容量8T。" />
+    android:text="图书馆主要收藏数学、物理、化学、生物、制药、化工、材料、机械、动力、选矿、电子、环境、建筑及各类人文社科文献。尤以化学化工及相关学科为收藏重点，其中精细化工、化学选矿、有机化工三个学科的文献达到了研究级收藏水平。收藏历年中文期刊4500余种，外文期刊1000多种，其中美国化学文摘（CA）印刷本从1907年至2007年收藏最为完整，2007年后改为电子版；流芳校区图书馆重点收藏语言文学、经济管理、政治法律、艺术设计、计算机科学、自动化、机械及其他基础性学科的各类文献。
+" />
  
 </LinearLayout>

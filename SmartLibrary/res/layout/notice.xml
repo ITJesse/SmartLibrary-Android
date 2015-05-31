@@ -1,16 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="暂无消息"
-            style="@style/fragment_text"
-            android:layout_gravity="center"
-            android:id="@+id/textView"/>
+   <Switch
+       android:id="@+id/switch1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_alignParentRight="true"
+       android:layout_marginBottom="72dp"
+       android:textColor="#000000"
+       android:text="订阅状态" />
 
-</FrameLayout>
+   <EditText
+       android:id="@+id/EditTextE"
+       style="@style/fragment_text"
+       android:layout_width="200dp"
+       android:layout_height="wrap_content"
+       android:layout_alignLeft="@+id/textViewT"
+       android:layout_below="@+id/textViewT"
+       android:layout_marginTop="26dp"
+       android:ems="10"
+       android:hint="Java" />
+
+   <TextView
+       android:id="@+id/textViewT"
+       style="@style/fragment_text"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentTop="true"
+       android:layout_marginLeft="15dp"
+       android:layout_marginTop="68dp"
+       android:text="订阅关键字:"
+       android:textSize="20sp" />
+
+</RelativeLayout>

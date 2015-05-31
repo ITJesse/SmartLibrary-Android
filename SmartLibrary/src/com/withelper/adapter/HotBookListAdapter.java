@@ -27,39 +27,44 @@ public class HotBookListAdapter extends ArrayAdapter<HotBookInfo>{
 			
 			holder = new ViewHolder();
 			holder.name = (TextView)view.findViewById(R.id.name);
-			holder.author = (TextView)view.findViewById(R.id.author);
-			holder.press = (TextView)view.findViewById(R.id.press);
-			holder.callno = (TextView)view.findViewById(R.id.callno);
-			holder.collections = (TextView)view.findViewById(R.id.collections);
+			//holder.author = (TextView)view.findViewById(R.id.author);
+			//holder.press = (TextView)view.findViewById(R.id.press);
+			//holder.callno = (TextView)view.findViewById(R.id.callno);
+			//holder.collections = (TextView)view.findViewById(R.id.collections);
 			holder.lend_count = (TextView)view.findViewById(R.id.lend_count);
 			holder.lend_ratio = (TextView)view.findViewById(R.id.lend_ratio);
+			
 			view.setTag(holder);
+			
 		} else {
+			
 			view = convertView;
 			holder = (ViewHolder)convertView.getTag();
 		}
 		
 		//¶Ô¿Ø¼þ¸³Öµ
         final HotBookInfo singleoder = getItem(position);
+        
         if (singleoder != null) {
 			holder.name.setText(singleoder.getName());
-			holder.author.setText(singleoder.getAuthor());
-			holder.press.setText(singleoder.getPress());
-			holder.callno.setText(singleoder.getCallno());
-			holder.collections.setText(singleoder.getCollections());
+			//holder.author.setText(singleoder.getAuthor());
+			//holder.press.setText(singleoder.getPress());
+			//holder.callno.setText(singleoder.getCallno());
+			//holder.collections.setText(singleoder.getCollections());
 			holder.lend_count.setText(singleoder.getLend_count());
 			holder.lend_ratio.setText(singleoder.getLend_ratio());
 			
         }
+        
 		return view;
 	}
 	
 	public class ViewHolder{
 		public TextView name;
-		public TextView author;
-		public TextView press;
-		public TextView callno;
-		public TextView collections;
+		//public TextView author;
+		//public TextView press;
+		//public TextView callno;
+		//public TextView collections;
 		public TextView lend_count;
 		public TextView lend_ratio;
 	}

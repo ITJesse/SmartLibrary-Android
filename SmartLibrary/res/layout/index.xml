@@ -7,15 +7,9 @@
     android:orientation="vertical"
     tools:context="com.banban.activity.personFragment" >
 
-    <ImageView  
-            android:id="@+id/dialog_title_border"  
-            android:layout_width="fill_parent"  
-            android:layout_height="wrap_content"  
-             android:src="@drawable/titile_line" />
-
       <ImageView
           android:layout_width="fill_parent"
-          android:layout_height="80dp"
+          android:layout_height="100dp"
           android:background="@drawable/index_head" />
       
   <LinearLayout
@@ -36,11 +30,11 @@
               android:id="@+id/search"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_marginLeft="20.0dip"
-              android:layout_marginRight="20.0dip"
+              android:layout_marginLeft="10.0dip"
+              android:layout_marginRight="15.0dip"
               android:background="@null"
               android:gravity="center_vertical"
-              android:hint="输入图书信息查询"
+              android:hint="输入图书信息查询        "
               android:textColorHint="#6f8ba3"
               android:textSize="20sp" />
       </LinearLayout>
@@ -79,14 +73,6 @@
         android:layout_gravity="left"
         android:layout_weight="1"
         android:src="@drawable/index_act" />
-    
-    <ImageView
-        android:id="@+id/index_qrcode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_weight="1"
-        android:src="@drawable/index_qrcode" />
 
 </LinearLayout>
 
@@ -110,13 +96,6 @@
         android:layout_height="160dp"
         android:layout_gravity="left"
         android:src="@drawable/index_book" 
-         android:layout_weight="1"/>
-    <ImageView
-        android:id="@+id/index_learn"
-        android:layout_width="wrap_content"
-        android:layout_height="160dp"
-        android:layout_gravity="left"
-        android:src="@drawable/index_learn" 
          android:layout_weight="1"/>
 </LinearLayout>
 </LinearLayout>

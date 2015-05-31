@@ -23,7 +23,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
     private ResideMenuItem itemBorrow;
     private ResideMenuItem itemLearning;
     private ResideMenuItem itemNotice;
-    private ResideMenuItem itemSuggestion;
+    private ResideMenuItem itemQRcode;
     private ResideMenuItem itemSet;
     private ResideMenuItem itemIndex;
     long exitTime = 0; 
@@ -76,23 +76,23 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         // create menu items;
         itemIndex = new ResideMenuItem(this, R.drawable.l_about, "馆区服务");
         itemBorrow = new ResideMenuItem(this, R.drawable.l_logout,  "我的借阅");
-        itemLearning = new ResideMenuItem(this, R.drawable.i_sig,  "学习历程");
+        itemLearning = new ResideMenuItem(this, R.drawable.i_sig,  "预约自习室");
         itemNotice = new ResideMenuItem(this, R.drawable.l_con, "消息中心");
-        itemSuggestion = new ResideMenuItem(this, R.drawable.l_notice, "意见反馈");
+        itemQRcode = new ResideMenuItem(this, R.drawable.l_notice, "生成二维码");
         itemSet = new ResideMenuItem(this, R.drawable.l_set, "软件设置");
         
         itemIndex.setOnClickListener(this);
         itemBorrow.setOnClickListener(this);
         itemLearning.setOnClickListener(this);
         itemNotice.setOnClickListener(this);
-        itemSuggestion.setOnClickListener(this);
+        itemQRcode.setOnClickListener(this);
         itemSet.setOnClickListener(this);
         
         resideMenu.addMenuItem(itemIndex, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemBorrow, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemLearning, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemNotice, ResideMenu.DIRECTION_LEFT);
-        resideMenu.addMenuItem(itemSuggestion, ResideMenu.DIRECTION_LEFT);
+        resideMenu.addMenuItem(itemQRcode, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemSet, ResideMenu.DIRECTION_LEFT);
         
         // You can disable a direction by setting ->
@@ -146,7 +146,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
             changeFragment(new NoticeFragment());
             title = (TextView) findViewById(R.id.titlebar_tv);
     		title.setText(R.string.menu4);
-        }else if (view == itemSuggestion){
+        }else if (view == itemQRcode){
             changeFragment(new SuggestionFragment());
             title = (TextView) findViewById(R.id.titlebar_tv);
     		title.setText(R.string.menu5);
@@ -163,6 +163,7 @@ public class MenuActivity extends FragmentActivity implements View.OnClickListen
         }			
     		resideMenu.closeMenu();
         }
+    //设置对返回键的监听
     @Override  
         public boolean onKeyDown(int keyCode, KeyEvent event)   
         {  

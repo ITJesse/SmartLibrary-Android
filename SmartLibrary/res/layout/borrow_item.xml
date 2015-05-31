@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+ <TextView 
+        android:id="@+id/bookname1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingLeft="20dp"
+        android:textSize="15sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        />
+        
+    <TextView
+        android:id="@+id/author1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.00"
+        android:gravity="right"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_gravity="center"
+        android:textColor="@color/settler_center_title_bar_bg"
+        android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/returntime"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.00"
+            android:gravity="right"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_gravity="center"
+            android:textColor="@color/settler_center_title_bar_bg"
+            android:textSize="15sp" />
+
+</LinearLayout>

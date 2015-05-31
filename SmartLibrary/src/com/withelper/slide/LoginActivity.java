@@ -51,16 +51,16 @@ public class LoginActivity extends Activity implements OnClickListener{
 	
 	public void initView()
 	{
-		TextView t1 = (TextView) findViewById(R.id.forget_Psw);
+		//TextView t1 = (TextView) findViewById(R.id.forget_Psw);
 		
-		t1.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG );
+		//t1.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG );
 		EditText l_name=(EditText)findViewById(R.id.l_studentId);
 		EditText l_psw=(EditText)findViewById(R.id.l_password);
 		CheckBox chb = (CheckBox)findViewById(R.id.checkBox1);
 //		l_name.setText("cooelf");
 //		l_name.setText("1203020333");
 //		l_psw.setText("cs162536");
-		t1.setOnClickListener(this);
+		//t1.setOnClickListener(this);
 		
 		mBtnRegister = (Button) findViewById(R.id.login_btn);
 		mBtnRegister.setOnClickListener(this);
@@ -91,9 +91,9 @@ public class LoginActivity extends Activity implements OnClickListener{
 			//showRequestDialog();
 			Login();
 			break;
-		case R.id.forget_Psw:
-			ResetAccount();
-			break;
+//		case R.id.forget_Psw:
+//			ResetAccount();
+//			break;
 //		case R.id.registerID:
 //			JugeRegister();
 //			break;

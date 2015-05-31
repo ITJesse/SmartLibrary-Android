@@ -65,7 +65,7 @@ private ListView lv_hotbooklist;
         hotbooklist = new ArrayList<HotBookInfo>();
         lv_hotbooklist= (ListView)findViewById(R.id.hotbooklist);
 		sla = new HotBookListAdapter(this,0,hotbooklist);
-		lv_hotbooklist.setAdapter(sla);
+		//lv_hotbooklist.setAdapter(sla);
         
         mPullToRefreshView.setOnHeaderRefreshListener(this);
         mPullToRefreshView.setOnFooterRefreshListener(this);
@@ -73,7 +73,7 @@ private ListView lv_hotbooklist;
 
         
         GetHotBookList();
-		
+        lv_hotbooklist.setAdapter(sla);
 	}
 	
 	protected void GetHotBookList() {
@@ -101,7 +101,7 @@ private ListView lv_hotbooklist;
 			// TODO Auto-generated method stub
 			try {
 				resultData = InitData();
-				Thread.sleep(1000); 
+				//Thread.sleep(1000); 
 			} catch (Exception e) {
 				
 			}
@@ -126,19 +126,26 @@ private ListView lv_hotbooklist;
 					JSONArray newlist = json.getJSONArray("hot");
 					int length = newlist.length();
 					ArrayList<HotBookInfo> hotbookenewlist = new ArrayList<HotBookInfo>();
+					
 					if (length > 0) {
 						for(int i = 0; i < length; i++){//遍历JSONArray
 							JSONObject jo = newlist.getJSONObject(i);
+							if(i == 0){
 							HotBookInfo pi = new HotBookInfo();
-    						pi.setName(jo.getString("name"));
+							pi.setName("书名");
+							pi.setLend_count("可借阅数");
+							pi.setLend_ratio("借阅率");
+							hotbookenewlist.add(pi);
+							}
+							HotBookInfo pi = new HotBookInfo();
+							pi.setName(jo.getString("name"));
     						pi.setAuthor(jo.getString("author"));
     						pi.setPress(jo.getString("press"));
     						pi.setCallno(jo.getString("callno"));
     						pi.setCollections(jo.getString("collections"));
     						pi.setLend_count(jo.getString("lend_count"));
     						pi.setLend_ratio(jo.getString("lend_ratio"));
-    						
-    						hotbookenewlist.add(0,pi);
+    						hotbookenewlist.add(pi);
 						}
 						if(hotbookenewlist.size() > 0)
 							hotbooklist.addAll(hotbookenewlist);

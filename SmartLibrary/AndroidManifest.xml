@@ -91,6 +91,11 @@
             android:theme="@android:style/Theme.Light.NoTitleBar"
              >
         </activity>
+        <activity 
+            android:name="com.withelper.slide.IndexBorrowActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+             >
+        </activity>
     </application>
 
 </manifest>

@@ -5,9 +5,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu1">馆区服务</string>
     <string name="menu2">我的借阅</string>
-    <string name="menu3">学习历程</string>
+    <string name="menu3">自习室预定</string>
     <string name="menu4">消息中心</string>
-    <string name="menu5">意见反馈</string>
+    <string name="menu5">生成二维码</string>
      <string name="menu6">软件设置</string>
     <string name="action_settings">Settings</string>
     
