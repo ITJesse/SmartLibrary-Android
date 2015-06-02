@@ -48,10 +48,11 @@ public class QRcode {
 	                    {
 	                        pixels[y * QR_WIDTH + x] = 0xff000000;
 	                    }
-	                    else
-	                    {
-	                        pixels[y * QR_WIDTH + x] = 0xffffffff;
-	                    }
+//	                    背景透明
+//	                    else
+//	                    {
+//	                        pixels[y * QR_WIDTH + x] = 0xffffffff;
+//	                    }
 	                }
 	            }
 	            //Log.v("s","2");
