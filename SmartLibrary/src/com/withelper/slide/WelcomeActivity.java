@@ -71,7 +71,7 @@ public class WelcomeActivity extends Activity{
 			
 			@Override
 			public void run() {
-		    	Log.v("debug", "123");
+//		    	Log.v("debug", "123");
 				SharedPreferences sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE); //私有数据
 				String check = sharedPreferences.getString("isCheck", null);
 				if(check != null){
