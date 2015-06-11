@@ -1,4 +1,4 @@
-package QRcode;
+package com.withelper.util;
 
 import java.util.Hashtable;
 
@@ -11,32 +11,35 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.withelper.util.ParseMD5;
+
+import com.withelper.util.AESUtils;
 
 public class QRcode {
 	
 	
-	 public static Bitmap createQRImage(String tmp)
+	 public static Bitmap createQRImage(String studentId)
 	    {
 	     ParseMD5 p = new ParseMD5();
-	     String Sno = p.parseStrToMd5U32(tmp);
 		 try
 	        {
 	        	 int QR_WIDTH = 300 ;
 	        	 
 	        	 int QR_HEIGHT = 300 ;
 	        	//判断URL合法性
-	            if (Sno == null || "".equals(Sno) || Sno.length() < 1)
+	            if (studentId == null || "".equals(studentId) || studentId.length() < 1)
 	            {
 	                return null;
 	            }
+	            System.out.println("QRCode================" + studentId);
+	            String encryptString = AESUtils.encrypt(studentId, "itjesse");
+	            System.out.println("QRCode_encrypt================" + encryptString);
 	            //Log.v("s","1");
 	            Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();
 	            hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
 	            hints.put(EncodeHintType.ERROR_CORRECTION,ErrorCorrectionLevel.H);
 	            
 	            //图像数据转换，使用了矩阵转换
-	            BitMatrix bitMatrix = new QRCodeWriter().encode(Sno, BarcodeFormat.QR_CODE, QR_WIDTH, QR_HEIGHT, hints);
+	            BitMatrix bitMatrix = new QRCodeWriter().encode(encryptString, BarcodeFormat.QR_CODE, QR_WIDTH, QR_HEIGHT, hints);
 	            int[] pixels = new int[QR_WIDTH * QR_HEIGHT];
 	            //下面这里按照二维码的算法，逐个生成二维码的图片，
 	            //两个for循环是图片横列扫描的结果
@@ -68,7 +71,11 @@ public class QRcode {
 	        {
 	            e.printStackTrace();
 	            return null;
-	        }
+	        } catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			}
 			
 	    }
 }

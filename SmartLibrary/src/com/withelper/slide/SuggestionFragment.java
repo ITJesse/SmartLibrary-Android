@@ -3,8 +3,8 @@ package com.withelper.slide;
 
 
 import com.withelper.R;
+import com.withelper.util.QRcode;
 
-import QRcode.QRcode;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;

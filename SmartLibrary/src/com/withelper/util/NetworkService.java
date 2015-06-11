@@ -22,7 +22,7 @@ public class NetworkService {
 
 	private static String TAG = "NetworkService";
 	private static String salt = "withelper_itjesse";
-	private static String base_url = "http://library.itjesse.cn/API/Android/";
+	private static String base_url = "http://192.168.1.204:3000/API/Android/";
 	
 	
 	public static void cancel() {
